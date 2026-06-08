@@ -1,0 +1,172 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+
+.game-shell {
+  background:
+    linear-gradient(135deg, rgba(217, 244, 229, 0.9), rgba(255, 247, 223, 0.85)),
+    #f5f0e8;
+  color: #172033;
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  min-height: 100dvh;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.game-header {
+  align-items: end;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-inline: auto;
+  max-width: 58rem;
+  width: 100%;
+}
+
+.eyebrow {
+  color: #4d6075;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0 0 0.25rem;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  line-height: 1;
+  margin: 0;
+}
+
+.controls {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.difficulty {
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+}
+
+.difficulty legend {
+  color: #4d6075;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.difficulty label {
+  display: block;
+}
+
+.difficulty input {
+  clip: rect(0 0 0 0);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.difficulty span {
+  background: #ffffff;
+  border: 2px solid #8da0b5;
+  border-radius: 8px;
+  color: #172033;
+  cursor: pointer;
+  display: block;
+  font-weight: 700;
+  min-width: 4.2rem;
+  padding: 0.6rem 0.75rem;
+  text-align: center;
+}
+
+.difficulty input:checked + span {
+  background: #1f3a5f;
+  border-color: #1f3a5f;
+  color: #ffffff;
+}
+
+.difficulty input:disabled + span {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.difficulty input:focus-visible + span,
+.reset-button:focus-visible {
+  outline: 4px solid #f7c948;
+  outline-offset: 2px;
+}
+
+.reset-button {
+  background: #147d4f;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  font: 700 1rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  padding: 0.72rem 1rem;
+}
+
+.status-panel {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-inline: auto;
+  max-width: 42rem;
+  width: 100%;
+}
+
+.status-panel div {
+  background: #ffffff;
+  border: 1px solid #c7d1dc;
+  border-radius: 8px;
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.85rem;
+}
+
+.status-panel span {
+  color: #4d6075;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.status-panel strong {
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+}
+
+.sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (max-width: 720px) {
+  .game-header {
+    align-items: stretch;
+    display: grid;
+  }
+
+  .controls {
+    justify-content: start;
+  }
+}
+
+@media (max-width: 440px) {
+  .status-panel {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,57 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.card {
+  align-items: center;
+  aspect-ratio: 1;
+  background: #1f3a5f;
+  border: 2px solid #142740;
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(10, 25, 41, 0.18);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  font: 700 1.75rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  justify-content: center;
+  min-width: 0;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+  width: 100%;
+}
+
+.card:hover:not(:disabled) {
+  background: #294b78;
+  transform: translateY(-2px);
+}
+
+.card:focus-visible {
+  outline: 4px solid #f7c948;
+  outline-offset: 3px;
+}
+
+.card--face-up {
+  background: #fff7df;
+  border-color: #bf7b00;
+  color: #172033;
+}
+
+.card--matched {
+  background: #d9f4e5;
+  border-color: #147d4f;
+  color: #09351f;
+  cursor: default;
+}
+
+.card:disabled {
+  opacity: 1;
+}
+
+.card__symbol {
+  display: block;
+  overflow-wrap: anywhere;
+}

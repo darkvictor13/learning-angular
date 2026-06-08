@@ -1,0 +1,57 @@
+<main class="game-shell">
+  <header class="game-header">
+    <div>
+      <p class="eyebrow">Angular memory game</p>
+      <h1>Jogo da Memoria</h1>
+    </div>
+
+    <div class="controls" aria-label="Controles da partida">
+      <fieldset class="difficulty">
+        <legend>Dificuldade</legend>
+        @for (difficulty of difficulties; track difficulty.id) {
+          <label>
+            <input
+              type="radio"
+              name="difficulty"
+              [value]="difficulty.id"
+              [checked]="selectedDifficulty().id === difficulty.id"
+              [disabled]="!canChangeDifficulty()"
+              (change)="changeDifficulty(difficulty.id)"
+            />
+            <span>{{ difficulty.label }}</span>
+          </label>
+        }
+      </fieldset>
+
+      <button class="reset-button" type="button" (click)="resetGame()">Reiniciar</button>
+    </div>
+  </header>
+
+  <section class="status-panel" aria-label="Status da partida">
+    <div>
+      <span>Movimentos</span>
+      <strong>{{ moves() }}</strong>
+    </div>
+    <div>
+      <span>Tempo</span>
+      <strong>{{ formattedTime() }}</strong>
+    </div>
+    <div>
+      <span>Pares</span>
+      <strong>{{ matchedPairs() }}/{{ selectedDifficulty().pairCount }}</strong>
+    </div>
+  </section>
+
+  <p class="sr-only" aria-live="polite">{{ progressLabel() }}</p>
+
+  <app-memory-board
+    [cards]="cards()"
+    [columns]="selectedDifficulty().columns"
+    [disabled]="boardDisabled()"
+    (cardSelected)="selectCard($event)"
+  />
+
+  @if (status() === 'won') {
+    <app-game-summary [time]="formattedTime()" [moves]="moves()" (playAgain)="resetGame()" />
+  }
+</main>
